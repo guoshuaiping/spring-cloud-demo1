@@ -1,13 +1,13 @@
-package com.gsp.springclouddemo1;
+package com.example.userservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringCloudDemo1Application {
+public class UserServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudDemo1Application.class, args);
+        SpringApplication.run(UserServiceApplication.class, args);
     }
 
 }
