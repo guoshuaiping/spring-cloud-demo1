@@ -1,8 +1,2 @@
 server:
-  port: 8084
-spring:
-  application:
-    name: user-service
-  cloud:
-    nacos:
-      server-addr: localhost:8848
+  port: 8085

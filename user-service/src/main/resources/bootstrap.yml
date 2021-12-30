@@ -1,0 +1,11 @@
+#这个文件是引导文件，优先级高于application.yml
+spring:
+  application:
+    name: user-service # 服务名称
+  profiles:
+    active: dev # 开发环境，所以这里是dev
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # Nacos服务地址
+      config:
+        file-extension: yaml # 配置文件后缀名
