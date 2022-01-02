@@ -9,3 +9,11 @@ spring:
 user-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+logging:
+  level:
+    com.gsp: debug
+#feign:
+#  client:
+#    config:
+#      default:
+#        loggerLevel: FULL
