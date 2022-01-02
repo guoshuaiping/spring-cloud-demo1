@@ -1,6 +1,7 @@
 package com.gsp.order;
 
-import com.gsp.order.config.FeignClientConfiguration;
+import com.gsp.feign.clients.UserClient;
+import com.gsp.feign.config.FeignClientConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -8,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@EnableFeignClients(defaultConfiguration = FeignClientConfiguration.class)
+@EnableFeignClients(clients = UserClient.class, defaultConfiguration = FeignClientConfiguration.class)
 @SpringBootApplication
 public class OrderServiceApplication {
 

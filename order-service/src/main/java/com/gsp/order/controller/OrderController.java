@@ -1,5 +1,6 @@
 package com.gsp.order.controller;
 
+import com.gsp.feign.domain.User;
 import com.gsp.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,5 +20,9 @@ public class OrderController {
     @GetMapping("/order/userName/{orderId}")
     public String queryUserNameByOrderId(@PathVariable("orderId") Long orderId) {
         return orderService.queryUserNameByOrderId(orderId);
+    }
+    @GetMapping("/order/userDetail/{orderId}")
+    public User queryUserDetailByOrderId(@PathVariable("orderId") Long orderId) {
+        return orderService.queryUserDetailByOrderId(orderId);
     }
 }

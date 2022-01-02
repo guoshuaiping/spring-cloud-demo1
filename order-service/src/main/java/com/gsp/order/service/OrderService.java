@@ -1,6 +1,7 @@
 package com.gsp.order.service;
 
-import com.gsp.order.clients.UserClient;
+import com.gsp.feign.clients.UserClient;
+import com.gsp.feign.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -24,5 +25,10 @@ public class OrderService {
         // ③使用Feign客户端代替原先的RestTemplate,更优雅
         String userName = userClient.findByOrderId(orderId);
         return userName;
+    }
+
+    public User queryUserDetailByOrderId(Long orderId) {
+        User user = userClient.findDetailByOrderId(orderId);
+        return user;
     }
 }

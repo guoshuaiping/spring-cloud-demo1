@@ -1,4 +1,4 @@
-package com.gsp.order.config;
+package com.gsp.feign.config;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;

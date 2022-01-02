@@ -13,10 +13,10 @@ logging:
   level:
     com.gsp: debug
 feign:
-  client:
-    config:
-      default:
-        loggerLevel: FULL
+#  client:
+#    config:
+#      default:
+#        loggerLevel: FULL
   httpclient:
     enabled: true # 开启feign对HttpClient的支持
     max-connections: 200 # 最大连接数

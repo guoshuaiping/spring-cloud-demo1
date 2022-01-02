@@ -1,5 +1,6 @@
 package com.gsp.user.controller;
 
+import com.gsp.user.domain.User;
 import com.gsp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +27,11 @@ public class UserController {
     @GetMapping("/userName/{orderId}")
     public String getUserNameByOrderId(@PathVariable("orderId") Long orderId){
         return userService.getUserNameByOrderId(orderId);
+    }
+
+    @GetMapping("/userDetail/{orderId}")
+    public User findDetailByOrderId(@PathVariable("orderId") Long orderId) {
+        return userService.getDetailByOrderId(orderId);
     }
 
     @GetMapping("now")
