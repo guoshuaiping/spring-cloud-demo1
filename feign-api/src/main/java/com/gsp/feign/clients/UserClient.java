@@ -4,8 +4,10 @@ import com.gsp.feign.domain.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @FeignClient("user-service")
+@RequestMapping("/user")
 public interface UserClient {
     @GetMapping("/userName/{orderId}")
     String findByOrderId(@PathVariable("orderId") Long id);
