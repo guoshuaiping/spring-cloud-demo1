@@ -5,10 +5,7 @@ import com.gsp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,7 +24,9 @@ public class UserController {
     private String myName;
 
     @GetMapping("/userName/{orderId}")
-    public String getUserNameByOrderId(@PathVariable("orderId") Long orderId){
+    public String getUserNameByOrderId(@PathVariable("orderId") Long orderId, @RequestHeader(value = "Truth", required = false) String truth, @RequestHeader(value = "Yes", required = false) String yes){
+        System.out.println("truth: " + truth);
+        System.out.println("yes: " + yes);
         return userService.getUserNameByOrderId(orderId);
     }
 
