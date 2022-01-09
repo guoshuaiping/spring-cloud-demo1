@@ -1,5 +1,6 @@
 package com.gsp.order.service;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.gsp.feign.clients.UserClient;
 import com.gsp.feign.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,11 @@ public class OrderService {
     public User queryUserDetailByOrderId(Long orderId) {
         User user = userClient.findDetailByOrderId(orderId);
         return user;
+    }
+
+    @SentinelResource("goods") // Sentinel默认只标记Controller中的方法为资源，如果要标记其他方法，需要利用@SentinelResource注解
+    public String queryGoods() {
+        System.err.println("查询商品");
+        return "查询商品成功！";
     }
 }

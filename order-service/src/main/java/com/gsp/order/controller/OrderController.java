@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     @Autowired
     private OrderService orderService;
-
+    // /order 可用于模拟限流配置之【直接模式】
     @RequestMapping("/order")
     public String function () {
         return "hello order";
@@ -24,5 +24,25 @@ public class OrderController {
     @GetMapping("/order/userDetail/{orderId}")
     public User queryUserDetailByOrderId(@PathVariable("orderId") Long orderId) {
         return orderService.queryUserDetailByOrderId(orderId);
+    }
+    // /order/query 和 /order/update 可用于模拟限流高级配置之【关联模式流控】
+    @GetMapping("/order/query")
+    public String queryOrder() {
+        return "订单查询成功~";
+    }
+    @GetMapping("/order/update")
+    public String updateOrder() {
+        return "更新订单成功！";
+    }
+
+    // /order/queryGoods 和 /order/updateGoods 和 orderService 可用于模拟限流高级配置之【链路模式流控】
+    @GetMapping("/order/queryGoods")
+    public String queryGoods() {
+        return orderService.queryGoods();
+    }
+    @GetMapping("/order/updateGoods")
+    public  String updateGoods() {
+        String queryGoodsResult = orderService.queryGoods();
+        return  queryGoodsResult + ",更新商品信息成功";
     }
 }
