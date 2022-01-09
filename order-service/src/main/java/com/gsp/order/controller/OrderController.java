@@ -1,5 +1,6 @@
 package com.gsp.order.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.gsp.feign.domain.User;
 import com.gsp.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class OrderController {
     public String function () {
         return "hello order";
     }
+
+    @SentinelResource("hot") // 用于模拟【热点参数限流】，热点参数限流对默认的springMVC资源无效，所以需要使用该注解声明
     @GetMapping("/order/userName/{orderId}")
     public String queryUserNameByOrderId(@PathVariable("orderId") Long orderId) {
         return orderService.queryUserNameByOrderId(orderId);
