@@ -24,14 +24,22 @@ public class UserController {
     private String myName;
 
     @GetMapping("/userName/{orderId}")
-    public String getUserNameByOrderId(@PathVariable("orderId") Long orderId, @RequestHeader(value = "Truth", required = false) String truth, @RequestHeader(value = "Yes", required = false) String yes){
+    public String getUserNameByOrderId(@PathVariable("orderId") Long orderId, @RequestHeader(value = "Truth", required = false) String truth, @RequestHeader(value = "Yes", required = false) String yes) throws InterruptedException {
         System.out.println("truth: " + truth);
         System.out.println("yes: " + yes);
+        if (orderId == 1) {
+            // 休眠，以触发调用方的【慢调用熔断策略】
+            Thread.sleep(60);
+        }
         return userService.getUserNameByOrderId(orderId);
     }
 
     @GetMapping("/userDetail/{orderId}")
-    public User findDetailByOrderId(@PathVariable("orderId") Long orderId) {
+    public User findDetailByOrderId(@PathVariable("orderId") Long orderId) throws InterruptedException {
+        if (orderId == 2) {
+            // 抛出异常，以触发调用方的【异常比例/数熔断策略】
+            throw new RuntimeException("故意出错，触发熔断");
+        }
         return userService.getDetailByOrderId(orderId);
     }
 
